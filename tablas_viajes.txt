@@ -1,0 +1,26 @@
+CREATE TABLE viajes(
+id INT NOT NULL AUTO_INCREMENT,
+nombre VARCHAR(30) NOT NULL,
+descripcion VARCHAR(100) NOT NULL ,
+idTipo INT NOT NULL,
+precio INT(8) NOT NULL,
+foto VARCHAR(30),
+PRIMARY KEY (id),
+FOREIGN KEY (idTipo) REFERENCES tipos(id),
+UNIQUE (nombre)
+) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE salidas(
+id INT NOT NULL AUTO_INCREMENT,
+idViaje INT NOT NULL,
+ciudad VARCHAR(30) NOT NULL,
+PRIMARY KEY (id),  FOREIGN KEY (idViaje) REFERENCES viajes(id), UNIQUE (idViaje,ciudad)) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+CREATE TABLE tipos(
+id INT NOT NULL AUTO_INCREMENT,
+tipo VARCHAR(30) NOT NULL ,
+PRIMARY KEY (id)) DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+insert into tipos values(null, 'cultural');
+insert into tipos values(null, 'deportivo');
+insert into tipos values(null, 'turístico');

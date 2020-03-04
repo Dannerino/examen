@@ -1,0 +1,39 @@
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://localhost/soap/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://localhost/soap/">
+	<types>
+		<schema targetNamespace="http://localhost/soap/">
+			<import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+			<import namespace="http://schemas.xmlsoap.org/wsdl/" />
+		</schema>
+	</types>
+	<message name="duplicateNameRequest">
+		<part name="nombre" type="xsd:string" />
+	</message>
+	<message name="duplicateNameResponse">
+		<part name="return" type="xsd:boolean" />
+	</message>
+	<portType name="PortType">
+		<operation name="duplicateName">
+			<documentation>
+				Documentacion de duplicateName
+			</documentation>
+			<input message="tns:duplicateNameRequest" />
+			<output message="tns:duplicateNameResponse" />
+		</operation>
+	</portType>
+	<binding name="Binding" type="tns:PortType">
+		<binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="duplicateName">
+			<operation soapAction="http://localhost/examen/servicios/servicio.php/duplicateName" style="rpc" />
+			<input>
+			</input>
+			<output>
+				<body use="literal" namespace="" />
+			</output>
+		</operation>
+	</binding>
+	<service name="">
+		<port name="Port" binding="tns:Binding">
+			<address location="http://localhost/examen/servicios/servicio.php" />
+		</port>
+	</service>
+</definitions>
